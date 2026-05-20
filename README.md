@@ -1,75 +1,111 @@
-# Semiconductor-Packaging-Design-Workshop
-Semiconductor Packaging Fundamentals
-# Semiconductor Packaging
+# Semiconductor Packaging - Course Progress
 
-This GitHub repository documents the Semiconductor Packaging - Fundamentals of Design and Testing 10-days Workshop offered by VSD Corp. Pvt. Ltd. 
+This repository documents my hands-on work, lecture notes, and simulation labs completed during the VSD Semiconductor Packaging Workshop.
 
-The workshop offers a full-pipeline understanding of the semiconductor packaging process, starting from the fundamentals and evolution of packaging to advanced 2.5D/3D architectures. We gain insights into advanced interconnect technologies, RDLs & interposers, assembly processes, package reliability analysis, and also get to perform hands-on thermal simulations, package design and modeling using ANSYS tools.
-
-## Course Syllabus & Progress Tracker
+## Course Progress Tracker
 
 | Module # | Topic(s) Covered | Status |
 | :--- | :--- | :--- |
-| **Mod. 1** | Packaging Evolution: From Basics to 3D Integration | 🟡 In Progress |
-| **Mod. 2** | From Wafer to Package: Assembly and Manufacturing Essentials | ⚪ Not Started |
+| **Mod. 1** | Packaging Evolution: From Basics to 3D Integration | 🟢 Completed |
+| **Mod. 2** | From Wafer to Package: Assembly and Manufacturing Essentials | 🟡 In Progress |
 | **Mod. 3** | Labs: Thermal Simulation of Semiconductor Packages with ANSYS | ⚪ Not Started |
 | **Mod. 4** | Ensuring Package Reliability: Testing and Performance Validation | ⚪ Not Started |
-| **Mod. 5** | Package Design and Modeling: Building a Semiconductor Package from Scratch | ⚪ Not Started |
+| **Mod. 5** | Package Design and Modeling: Building a Package from Scratch | ⚪ Not Started |
+
+---
 
 ## 1. Packaging Evolution: From Basics to 3D Integration
-
-Semiconductor packaging refers to the final stage of semiconductor device fabrication, where the finished silicon die is enclosed in a protective housing. It bridges the gap between a fragile silicon chip manufactured in a cleanroom and the real-world electronic system.
-
-### Key Functions of a Semiconductor Package:
-1. **Protection:** Guards the delicate die against mechanical damage, humidity, contaminants, corrosion, and Electrostatic Discharge (ESD).
-2. **Electrical Connectivity:** Connects the internal circuitry of the die to the external board via leads, pins, solder balls, or lands.
-3. **Mechanical Support:** Provides a sturdy physical structure to mount and hold the chip securely on a PCB.
-4. **Thermal Dissipation:** Acts as a heat path to conduct thermal energy away from the active silicon die to prevent overheating.
+* **Core Concept:** Packaging protects the fragile silicon die, provides electrical connections to the PCB, and manages thermal dissipation.
+* **Ecosystem:** The industry relies on Fabless designers (Apple, Nvidia), Foundries (TSMC), and OSAT units (ASE, Amkor) for manufacturing and assembly.
+* **Advanced Packaging:** Shifting from single-chip architectures to Multi-Chip Modules (MCM), 2.5D (side-by-side on an interposer), and 3D stacking using Through-Silicon Vias (TSVs) to scale system performance.
 
 ---
 
-### 1.1 Introduction To Semiconductor Packaging And Industry Overview
-The semiconductor manufacturing pipeline is split into two major segments:
-* **Front-End Process:** Wafer manufacturing and transistor fabrication inside the foundry cleanrooms.
-* **Back-End Process:** The assembly, packaging, marking, and testing of the finalized silicon chips.
-
-#### The Global Industry Ecosystem Structure:
-* **Fabless Companies:** Focus strictly on design and verification (e.g., Apple, Nvidia, Qualcomm).
-* **Foundries:** Pure-play manufacturing facilities that process the raw silicon wafers based on design layouts (e.g., TSMC, UMC, GlobalFoundries).
-* **OSAT (Out-Sourced Assembly and Test):** Specialized third-party vendors that receive the completed wafers, dice them, and perform the final packaging and testing (e.g., ASE, Amkor).
-* **IDM (Integrated Device Manufacturer):** Companies that vertically handle the entire chain from design and wafer fabrication to internal packaging and testing (e.g., Intel, Samsung, Texas Instruments).
+## 2. From Wafer to Package: Assembly Essentials
+* **Wafer Prep:** Involves backside grinding to reduce silicon thickness (~700um to ~200um) followed by high-precision dicing.
+* **Interconnects:** Traditional packaging uses copper leadframes and gold wire bonding; high-performance layouts use flipped chips and micro-solder bumps (Flip-Chip Assembly).
 
 ---
 
-### 1.2 Understanding Package Requirements And Foundational Package Types
-Selecting the correct package directly affects system cost, physical footprint, thermal performance, and signal integrity.
+## 3 - Labs: Thermal Simulation of Semiconductor Packages with ANSYS tools
 
-#### Foundational Package Architectures:
-* **Through-Hole Mounting:** Pins penetrate through the PCB layer (e.g., Dual In-line Package - **DIP**, Pin Grid Array - **PGA**).
-* **Surface Mount Technology (SMT):** Component leads are soldered directly onto the PCB surface layout pads (e.g., Quad Flat Package - **QFP**, Quad Flat No-leads - **QFN**, Ball Grid Array - **BGA**).
+## 3.1 - Introduction And Getting Started With ANSYS Electronics Desktop
+ANSYS Electronics Desktop (AEDT) is a multi-physics simulation software that combines Electromagnetic, Signal Integrity, Thermal and Electro-Mechanical simulation tools in a single integrated platform. It is widely used for designing and analyzing high-speed electronic circuits and systems.
+
+## 3.2 - Setting Up A Flip-Chip BGA Package
+We will be taking an already available FC-BGA package within the Icepak Toolkit for this simulation exercise.
+
+* **Step 1:** Open AEDT and launch Icepak
+  * *Drop your screenshot of launching Icepak here*
+
+* **Step 2.1:** Create a Flipchip BGA Package
+  * Navigate to: `Icepak` -> `Toolkit` -> `Geometry` -> `Packages` -> `Flipchip_BGA`
+
+* **Step 2.2:** The Package Configuration window opens up
+  * The dimensions and other aspects of the package, substrate, die, die underfill and the solder balls can be configured here. Once configured, click OK to generate the package model.
+  * *Drop your screenshot of the Package Configuration window here*
+    <img width="1142" height="643" alt="Capture" src="https://github.com/user-attachments/assets/1dcd18c4-6ffd-4e12-a61f-7822e75960b6" />
+<img width="1910" height="1002" alt="Package Generated" src="https://github.com/user-attachments/assets/7597c2d9-19e3-4d54-be39-2e83a4b81af7" />
+
+
+* **Step 3:** Explore the 3D Package Model Structure in Icepak
+  * *Drop your screen<img width="1156" height="701" alt="Capture2" src="https://github.com/user-attachments/assets/44f4e98d-176e-4f2d-9c48-c26658d6bb58" />
+shot of the generated 3D package model (showing Ball Group, Substrate, Die Underfill, and Die) here*
+
+## 3.3 - Material Definitions And Thermal Power Sources
+
+* **Step 4:** Review and modify the material and definition types for the different components of the model.
+  * *Drop your screenshot of the Material Definitions window here*
+
+* **Step 5.1:** Add/ Assign Source Thermal Model for Die
+  * In the "Project Manager" sub-window, expand the Thermal section, open the `BGA1_die_source` and configure the thermal conditions.
+  * *Drop your screenshot of the Die Source Thermal Model setup here*
+
+* **Step 5.2:** Add/ Assign Source Thermal Model for Substrate
+  * Right-click on `Flipchip_BGA1_substrate` under `Models` -> `Flipchip_BGA1_Group` -> `Solids` and assign a Thermal Source. Set the thermal condition on the substrate to *Fixed Temperature* and the temperature as *Ambient*.
+
+* **Step 6:** Add Thermal monitors for the different components
+  * Right-click on the substrate solid, choose `Assign Monitor` -> `Point...`, and select *Temperature*. Repeat this to add thermal monitors for the die and the die-underfill.
+  * *Drop your screenshot of the added Thermal Monitors here*
+
+## 3.4 - Meshing And Running The Thermal Analysis
+
+* **Step 7.1:** Generate Mesh
+  * Go to the Simulation tab and click on **Generate Mesh**. Save the project if prompted and wait for the mesh generation to complete.
+
+* **Step 7.2:** Review Mesh Quality metrics
+  * Once the mesh is generated, review the quality metrics such as Face Alignment, Skewness, and Volume.
+  * *Drop your screenshot of the Mesh Quality charts here*
+
+* **Step 8:** Add Thermal Analysis
+  * Under Project Manager, right-click on **Analysis**, select **Add Analysis Setup**, and configure the solver settings (choose default settings for this analysis).
+
+## 3.5 - Viewing Results And Exploring Other Package Types
+
+* **Step 9:** Validate the Simulation setup
+  * Click on the **Validate** button in the top ribbon and ensure all checks are validated successfully.
+  * *Drop your validation check screenshot here*
+
+* **Step 10:** Run the simulation and plot the temperature map
+  * Click on **Analyze All** in the top ribbon. Once completed, select the complete FC-BGA package in the 3D view, right-click, and select `Plot Fields` -> `Temperature` -> `Temperature`.
+  * Enable *Gaussian Smoothing* under Surface Smoothing options.
+  * *Drop your final Top View and Bottom View Temperature Field Plots here*<img width="1142" height="643" alt="Capture" src="https://github.com/user-attachments/assets/29a9abd5-8b19-4a21-87ca-e8542c1f4f97" />
+
+*Replace this text later by dragging and dropping your simulation field plots / thermal maps here.*
 
 ---
 
-### 1.3 Evolving Package Architectures - From Single Chip To Multi-Chip Modules
-As performance demands pushed beyond the limitations of single-chip scaling (Moore's Law slowing down), the industry pivoted toward integrating multiple chips into a single dense footprint.
-* **Conventional Packaging:** Wafers are fully diced into individual chips *before* the packaging sequence begins.
-* **MCM (Multi-Chip Module):** Houses multiple distinct dies inside a single physical package carrier substrate to save space and boost local data speeds.
+## 4. Package Reliability and Testing
+* **Wafer Sorting & Probing:** Isolates and marks known-good dies before assembly begins.
+* **Package Testing:** Employs Burn-in screening (elevated temperature/voltage) to catch early-life failures and Final Testing to validate hardware data sheets.
 
 ---
 
-### 1.4 Interposers, RDLs, and 2.5D/3D Packaging Approaches
-Advanced integration requires much finer interconnection methods than traditional wire bonds.
-* **RDL (Redistribution Layer):** Extra fine-line metal routing layers deposited directly on the die/wafer surface to reroute tight circuit pads to easily accessible solder bump footprints.
-* **Interposers:** A specialized intermediate substrate (often silicon, glass, or high-density organic material) placed between the dies and the main package substrate to route massive numbers of parallel high-speed lines.
-* **2.5D Integration:** Side-by-side placement of multiple dies (e.g., a high-performance compute logic die next to High Bandwidth Memory - **HBM**) on top of a shared passive Interposer layer.
-* **3D Integration:** True vertical stacking of active circuit layers connected straight through the silicon via **TSVs** (Through-Silicon Vias), drastically minimizing wire lengths and latency.
+## 5. Package Design and Modeling from Scratch
+*Replace this text later by dragging and dropping your final JEDEC 4-point wire-bond 3D model screenshot here.*
 
 ---
-
-### 1.5 Comparative Analysis And Selecting The Right Packaging Solution
-The ideal package choice is always a balanced optimization matrix tailored directly to the final application:
-* High-frequency AI workloads demand ultra-dense **2.5D CoWoS** layouts for signal speed.
-* Mobile form-factors prioritize sleek **WLCSP** (Wafer Level Chip Scale Packaging) and **PoP** (Package-on-Package) vertical stacks.
-* Consumer cost-sensitive products opt for mature, robust **QFN/QFP** leadframe-based options.---
+## Conclusion
+This workshop bridges the gap between pure chip design and real-world system integration, demonstrating how physical constraints dictate layout and thermal performance.
 
 
